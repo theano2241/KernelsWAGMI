@@ -12,6 +12,9 @@ token_db_df = pd.read_csv(token_path)
 token_db = token_db_df['token_list'].tolist()
 
 db = db.drop(columns=['Unnamed: 0'])
+condition = db['stamp'] < 1703137065
+# Drop rows based on the condition
+db = db[~condition]
 
 i = 0
 end = 500
